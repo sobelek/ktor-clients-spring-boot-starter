@@ -7,6 +7,8 @@ plugins {
     kotlin("jvm") version "1.7.22"
     kotlin("plugin.spring") version "1.7.22"
     id("maven-publish")
+    id("java-library")
+    id("signing")
 }
 
 group = "io.github.sobelek"
@@ -15,7 +17,6 @@ java.sourceCompatibility = JavaVersion.VERSION_17
 
 repositories {
     mavenCentral()
-    mavenLocal()
 }
 val bootJar: BootJar by tasks
 
@@ -47,10 +48,23 @@ tasks.withType<KotlinCompile> {
 tasks.withType<Test> {
     useJUnitPlatform()
 }
+java{
+    withJavadocJar()
+    withSourcesJar()
+}
 
 publishing {
+
     publications {
-        create<MavenPublication>("maven-local") {
+        create<MavenPublication>("mavenJava") {
+            pom{
+                licenses {
+                    license {
+                        name.set("The Apache License, Version 2.0")
+                        url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+                    }
+                }
+            }
             groupId = "io.github.sobelek"
             artifactId = "ktor-clients-spring-boot-starter"
             version = "0.0.1-SNAPSHOT"
@@ -58,4 +72,14 @@ publishing {
             from(components["java"])
         }
     }
+    repositories {
+        maven {
+            name = "mavenCentralRepository"
+            val releasesRepoUrl = uri("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
+            val snapshotsRepoUrl = uri("https://s01.oss.sonatype.org/content/repositories/snapshots/")
+            url = if (version.toString().endsWith("SNAPSHOT")) snapshotsRepoUrl else releasesRepoUrl
+            credentials(PasswordCredentials::class)
+        }
+    }
+
 }
