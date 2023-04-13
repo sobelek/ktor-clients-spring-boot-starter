@@ -12,7 +12,8 @@ plugins {
 }
 
 group = "io.github.sobelek"
-version = "0.0.1-SNAPSHOT"
+
+version = "0.0.1"
 java.sourceCompatibility = JavaVersion.VERSION_17
 
 repositories {
@@ -65,10 +66,6 @@ publishing {
                     }
                 }
             }
-            groupId = "io.github.sobelek"
-            artifactId = "ktor-clients-spring-boot-starter"
-            version = "0.0.1-SNAPSHOT"
-
             from(components["java"])
         }
     }
