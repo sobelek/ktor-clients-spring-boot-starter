@@ -13,7 +13,7 @@ plugins {
 
 group = "io.github.sobelek"
 
-version = "0.0.1"
+version = "0.0.2"
 java.sourceCompatibility = JavaVersion.VERSION_17
 
 repositories {
@@ -58,6 +58,7 @@ publishing {
 
     publications {
         create<MavenPublication>("mavenJava") {
+            version = "0.0.2"
             pom{
                 licenses {
                     license {
@@ -67,6 +68,7 @@ publishing {
                 }
             }
             from(components["java"])
+
         }
     }
     repositories {
