@@ -62,6 +62,7 @@ publishing {
             pom{
                 name.set("ktor-clients-spring-boot-starter")
                 description.set("Spring autoconfigure for ktor clients")
+                url.set("https://github.com/sobelek/ktor-clients-spring-boot-starter")
                 developers {
                     developer {
                         id.set("sobelek")
@@ -95,4 +96,7 @@ publishing {
         }
     }
 
+}
+signing {
+    sign(publishing.publications["mavenJava"])
 }
