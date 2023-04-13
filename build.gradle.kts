@@ -60,6 +60,20 @@ publishing {
         create<MavenPublication>("mavenJava") {
             version = "0.0.2"
             pom{
+                name.set("ktor-clients-spring-boot-starter")
+                description.set("Spring autoconfigure for ktor clients")
+                developers {
+                    developer {
+                        id.set("sobelek")
+                        name.set("Jakub Sobczak")
+                        email.set("ksobczak16@gmail.com")
+                    }
+                }
+                scm {
+                    connection.set("scm:git@github.com:sobelek/ktor-clients-spring-boot-starter.git")
+                    developerConnection.set("scm:git@github.com:sobelek/ktor-clients-spring-boot-starter.git")
+                    url.set("https://github.com/sobelek/ktor-clients-spring-boot-starter")
+                }
                 licenses {
                     license {
                         name.set("The Apache License, Version 2.0")
