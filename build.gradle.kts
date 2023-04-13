@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.springframework.boot.gradle.tasks.bundling.BootJar
 
 plugins {
     id("org.springframework.boot") version "3.0.5"
@@ -16,6 +17,9 @@ repositories {
     mavenCentral()
     mavenLocal()
 }
+val bootJar: BootJar by tasks
+
+bootJar.enabled = false
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter")
