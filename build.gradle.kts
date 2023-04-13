@@ -9,7 +9,7 @@ plugins {
     id("maven-publish")
 }
 
-group = "github.sobelek"
+group = "io.github.sobelek"
 version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_17
 
@@ -51,7 +51,7 @@ tasks.withType<Test> {
 publishing {
     publications {
         create<MavenPublication>("maven-local") {
-            groupId = "github.sobelek"
+            groupId = "io.github.sobelek"
             artifactId = "ktor-clients-spring-boot-starter"
             version = "0.0.1-SNAPSHOT"
 

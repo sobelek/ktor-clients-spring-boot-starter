@@ -1,4 +1,4 @@
-package github.sobelek.ktorclientsspringbootstarter
+package io.github.sobelek.ktorclientsspringbootstarter
 
 import io.ktor.client.plugins.logging.LogLevel
 
