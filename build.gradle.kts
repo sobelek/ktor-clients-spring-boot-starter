@@ -6,6 +6,7 @@ plugins {
     id("io.spring.dependency-management") version "1.1.0"
     kotlin("jvm") version "1.7.22"
     kotlin("plugin.spring") version "1.7.22"
+    id("pl.allegro.tech.build.axion-release") version "1.15.0"
     id("maven-publish")
     id("java-library")
     id("signing")
@@ -13,7 +14,7 @@ plugins {
 
 group = "io.github.sobelek"
 
-version = "0.0.2"
+version = scmVersion.version
 java.sourceCompatibility = JavaVersion.VERSION_17
 
 repositories {
@@ -58,7 +59,7 @@ publishing {
 
     publications {
         create<MavenPublication>("mavenJava") {
-            version = "0.0.2"
+            version = scmVersion.version
             pom{
                 name.set("ktor-clients-spring-boot-starter")
                 description.set("Spring autoconfigure for ktor clients")
