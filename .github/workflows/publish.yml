@@ -1,12 +1,13 @@
 name: Publish
 
 on:
-  release:
-    types: [released]
+  workflow_run:
+    workflows: [release]
+    types:
+      - completed
 
 jobs:
   publish:
-
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
