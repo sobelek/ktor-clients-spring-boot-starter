@@ -14,11 +14,16 @@ plugins {
 
 group = "io.github.sobelek"
 
+scmVersion {
+    ignoreUncommittedChanges.set(false)
+}
+
 version = scmVersion.version
 java.sourceCompatibility = JavaVersion.VERSION_17
 
 repositories {
     mavenCentral()
+    mavenLocal()
 }
 val bootJar: BootJar by tasks
 
@@ -32,12 +37,6 @@ dependencies {
     api("io.ktor:ktor-client-logging-jvm:2.2.4")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 
-}
-configurations{
-    create("exposedRuntime"){
-        isCanBeConsumed=true
-        isCanBeResolved=false
-    }
 }
 
 tasks.withType<KotlinCompile> {
@@ -98,6 +97,9 @@ publishing {
     }
 
 }
+val isReleaseVersion = !version.toString().endsWith("SNAPSHOT")
+
 signing {
+    setRequired{ isReleaseVersion && gradle.taskGraph.hasTask("publish") }
     sign(publishing.publications["mavenJava"])
 }

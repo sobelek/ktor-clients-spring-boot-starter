@@ -10,7 +10,7 @@ Usage
 ==============================
 Add dependency to your project(For now it needs to be pushed to local maven repository):
 ```
-    implementation("io.github.sobelek:ktor-clients-spring-boot-starter:0.0.1-SNAPSHOT")
+    implementation("io.github.sobelek:ktor-clients-spring-boot-starter:0.1.2")
 ```
 
 ### Define clients using configuration
