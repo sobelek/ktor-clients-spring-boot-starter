@@ -10,6 +10,8 @@ plugins {
     id("maven-publish")
     id("java-library")
     id("signing")
+    id("io.github.gradle-nexus.publish-plugin") version "1.3.0"
+
 }
 
 group = "io.github.sobelek"
@@ -53,7 +55,14 @@ java{
     withJavadocJar()
     withSourcesJar()
 }
-
+nexusPublishing {
+    repositories {
+        sonatype {
+            nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"))
+            snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
+        }
+    }
+}
 publishing {
 
     publications {
