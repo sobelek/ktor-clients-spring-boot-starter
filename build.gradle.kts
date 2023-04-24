@@ -51,7 +51,7 @@ tasks.withType<KotlinCompile> {
 tasks.withType<Test> {
     useJUnitPlatform()
 }
-java{
+java {
     withJavadocJar()
     withSourcesJar()
 }
@@ -71,7 +71,7 @@ publishing {
     publications {
         create<MavenPublication>("mavenJava") {
             version = scmVersion.version
-            pom{
+            pom {
                 name.set("ktor-clients-spring-boot-starter")
                 description.set("Spring autoconfigure for ktor clients")
                 url.set("https://github.com/sobelek/ktor-clients-spring-boot-starter")
@@ -109,17 +109,14 @@ publishing {
     }
 
 }
-val isReleaseVersion = !version.toString().endsWith("SNAPSHOT")
 
-if (System.getenv("GPG_KEY_ID") != null && isReleaseVersion && gradle.taskGraph.hasTask("publish")){
-    signing {
-        useInMemoryPgpKeys(
-            System.getenv("GPG_KEY_ID"),
-            System.getenv("GPG_PRIVATE_KEY"),
-            System.getenv("GPG_PRIVATE_KEY_PASSWORD")
-        )
-        sign(publishing.publications["mavenJava"])
-
-    }
+signing {
+    useInMemoryPgpKeys(
+        System.getenv("GPG_KEY_ID"),
+        System.getenv("GPG_PRIVATE_KEY"),
+        System.getenv("GPG_PRIVATE_KEY_PASSWORD")
+    )
+    sign(publishing.publications["mavenJava"])
 
 }
+
