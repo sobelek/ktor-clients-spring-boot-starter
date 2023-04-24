@@ -1,4 +1,9 @@
 Ktor Http clients starter
+
+[![build status](https://img.shields.io/github/actions/workflow/status/sobelek/ktor-clients-spring-boot-starter/ci.yml?branch=main)](https://github.com/sobelek/ktor-clients-spring-boot-starter/actions/workflows/ci.yml)
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.sobelek/ktor-clients-spring-boot-starter)](https://mvnrepository.com/artifact/io.github.sobelek)
+[![GitHub License](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](http://www.apache.org/licenses/LICENSE-2.0)
+
 ==============================
 
 This starter contains auto-configuration which enables seamless configuration of multiple
