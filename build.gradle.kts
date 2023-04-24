@@ -56,6 +56,7 @@ java{
     withSourcesJar()
 }
 nexusPublishing {
+    packageGroup.set("io.github.sobelek")
     repositories {
         sonatype {
             nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"))
