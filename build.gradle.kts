@@ -111,7 +111,15 @@ publishing {
 }
 val isReleaseVersion = !version.toString().endsWith("SNAPSHOT")
 
-signing {
-    setRequired{ isReleaseVersion && gradle.taskGraph.hasTask("publish") }
-    sign(publishing.publications["mavenJava"])
+if (System.getenv("GPG_KEY_ID") != null && isReleaseVersion && gradle.taskGraph.hasTask("publish")){
+    signing {
+        useInMemoryPgpKeys(
+            System.getenv("GPG_KEY_ID"),
+            System.getenv("GPG_PRIVATE_KEY"),
+            System.getenv("GPG_PRIVATE_KEY_PASSWORD")
+        )
+        sign(publishing.publications["mavenJava"])
+
+    }
+
 }
