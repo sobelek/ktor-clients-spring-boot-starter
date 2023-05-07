@@ -38,6 +38,8 @@ dependencies {
     api("io.ktor:ktor-client-cio:2.2.4")
     api("io.ktor:ktor-client-logging-jvm:2.2.4")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("com.github.tomakehurst:wiremock-jre8-standalone:2.35.0")
+
 
 }
 
